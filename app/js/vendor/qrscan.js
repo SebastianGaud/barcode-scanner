@@ -61,7 +61,7 @@ QRReader.init = () => {
 		navigator.mediaDevices.enumerateDevices()
 			.then(function (devices) {
 				var device = devices.filter(function(device) {
-					var deviceLabel = device.label.split(',')[1];
+					var deviceLabel = device.label.split(',')[0];
 					if (device.kind == "videoinput") {
 						return device;
 					}
@@ -71,7 +71,7 @@ QRReader.init = () => {
 					var constraints = {
 						video: {
 							mandatory: {
-								sourceId: device[1].deviceId ? device[1].deviceId : null
+								sourceId: device[0].deviceId ? device[0].deviceId : null
 							}
 						},
 						audio: false
